@@ -26,8 +26,6 @@
       --text-muted: rgba(255, 255, 255, 0.7);
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
       background: var(--bg-primary);
@@ -458,11 +456,9 @@
     /* ======================== ANIMATIONS ======================== */
     .reveal { visibility: hidden; }
     .reveal-left { visibility: hidden; }
-    .hero .reveal { visibility: visible; }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal-left { visibility: visible; }
-      html { scroll-behavior: auto; }
       #noise { display: none; }
     }
 
@@ -492,6 +488,11 @@
 </head>
 <body>
   <canvas id="noise"></canvas>
+  <noscript>
+    <style>
+      .reveal, .reveal-left { visibility: visible !important; }
+    </style>
+  </noscript>
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- NAVBAR -->
@@ -744,6 +745,15 @@
         if (overlay.classList.contains('active')) closeMenu();
       }, { passive: true });
 
+      /* ======================== BACK TO TOP ======================== */
+      const backToTop = document.querySelector('.back-to-top');
+      if (backToTop) {
+        backToTop.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
       /* ======================== GSAP SCROLL ANIMATIONS ======================== */
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
@@ -756,6 +766,7 @@
           );
 
           gsap.utils.toArray('.reveal').forEach(el => {
+            if (el.closest('.hero')) return;
             gsap.fromTo(el,
               { autoAlpha: 0, y: 30 },
               {
