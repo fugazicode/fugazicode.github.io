@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0F172A;
+      --accent: #3B82F6;
+      --accent-light: #60A5FA;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .error-message {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .error-description {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 400px;
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.875rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .home-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="error-code">404</div>
+    <h1 class="error-message">Page Not Found</h1>
+    <p class="error-description">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="home-link">
+      Back to Home
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </main>
+</body>
+</html>
